@@ -29,9 +29,75 @@ class _calculatorState extends State<calculator> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.black,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.man,
+                ),
+                alignment: Alignment.topLeft,
+                color: Colors.black,
+                onPressed: () {},
+                iconSize: 80.0,
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.egg,
+                ),
+                alignment: Alignment.topLeft,
+                color: Colors.black,
+                onPressed: () {},
+                iconSize: 80.0,
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.bedroom_child,
+                ),
+                alignment: Alignment.topLeft,
+                color: Colors.black,
+                onPressed: () {},
+                iconSize: 80.0,
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.bedroom_child,
+                ),
+                alignment: Alignment.topLeft,
+                color: Colors.black,
+                onPressed: () {},
+                iconSize: 80.0,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                'BMI',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                'Calorie\n intake',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                'BMI',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                'BMI',
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ],
+          ),
+        ],
+      ),
+      // width: double.infinity,
+      // height: double.infinity,
+      // color: Colors.grey,
     );
   }
 }

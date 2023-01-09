@@ -36,7 +36,7 @@ class _calculatorState extends State<calculator> {
             children: [
               IconButton(
                 icon: Icon(
-                  Icons.man,
+                  Icons.man_rounded,
                 ),
                 alignment: Alignment.topLeft,
                 color: Colors.black,
@@ -45,7 +45,7 @@ class _calculatorState extends State<calculator> {
               ),
               IconButton(
                 icon: Icon(
-                  Icons.egg,
+                  Icons.egg_outlined,
                 ),
                 alignment: Alignment.topLeft,
                 color: Colors.black,

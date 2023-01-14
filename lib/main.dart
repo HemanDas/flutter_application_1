@@ -22,7 +22,7 @@ class _FitnexState extends State<Fitnex> {
     return Scaffold(
       drawer: Sidebar(),
       appBar: AppBar(
-        title: const Text('This is Fitnex projectG'),
+        title: const Text('Fitnex'),
         toolbarHeight: 40.0,
         centerTitle: true,
         backgroundColor: Color(0xff5ac18e),

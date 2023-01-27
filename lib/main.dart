@@ -51,12 +51,25 @@ class _FitnexState extends State<Fitnex> {
         },
         backgroundColor: Color(0xff5ac18e),
       ),
-      body: Center(
-        child: currentindex == 0
-            ? Body()
-            : currentindex == 1
-                ? calculator()
-                : schedule(),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0x665ac18e),
+                Color(0x995ac18e),
+                Color(0xcc5ac18e),
+                Color(0xff5ac18e),
+              ]),
+        ),
+        child: Center(
+          child: currentindex == 0
+              ? Body()
+              : currentindex == 1
+                  ? calculator()
+                  : schedule(),
+        ),
       ),
     );
   }

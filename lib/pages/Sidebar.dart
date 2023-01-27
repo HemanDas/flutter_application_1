@@ -13,54 +13,65 @@ class _SidebarState extends State<Sidebar> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        children: [
-          UserAccountsDrawerHeader(
-            accountName: Text('Force Sujal'),
-            accountEmail: Text('sujalbhulaa@gmail.com'),
-            decoration: BoxDecoration(color: Colors.lightGreenAccent[700]),
-            currentAccountPicture: CircleAvatar(
-              child: ClipOval(
-                child: Image.asset(
-                  'assets/sujal.jpg',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
+      child: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0x665ac18e),
+                Color(0xff5ac18e),
+              ]),
+        ),
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text('Force Sujal'),
+              accountEmail: Text('sujalbhulaa@gmail.com'),
+              decoration: BoxDecoration(color: Color(0xff5ac18e)),
+              currentAccountPicture: CircleAvatar(
+                child: ClipOval(
+                  child: Image.asset(
+                    'assets/sujal.jpg',
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.person),
-            title: Text('Profile'),
-            onTap: () => null,
-          ),
-          ListTile(
-            leading: Icon(Icons.book),
-            title: Text('Plans and Packages'),
-            onTap: () => null,
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => null,
-          ),
-          Divider(
-            color: Colors.grey,
-          ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Log Out'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => loginpage(),
-                ),
-              );
-            },
-          ),
-        ],
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Profile'),
+              onTap: () => null,
+            ),
+            ListTile(
+              leading: Icon(Icons.book),
+              title: Text('Plans and Packages'),
+              onTap: () => null,
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () => null,
+            ),
+            Divider(
+              color: Colors.grey,
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Log Out'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => navigate(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

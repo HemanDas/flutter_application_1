@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/pages/Sidebar.dart';
+// import 'package:flutter_application_1/pages/Sidebar.dart';
 import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/pages/container.dart';
 
 class loginpage extends StatefulWidget {
   const loginpage({super.key});
@@ -298,10 +299,10 @@ class _loginpageState extends State<loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xff5ac18e),
-      ),
-      drawer: loggedoutsidebar(),
+      // appBar: AppBar(
+      //   backgroundColor: Color(0xff5ac18e),
+      // ),
+      // drawer: loggedoutsidebar(),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
@@ -482,5 +483,64 @@ class _passresetState extends State<passreset> {
   @override
   Widget build(BuildContext context) {
     return Scaffold();
+  }
+}
+
+class navigate extends StatefulWidget {
+  const navigate({super.key});
+
+  @override
+  State<navigate> createState() => _navigateState();
+}
+
+class _navigateState extends State<navigate> {
+  @override
+  int currentindex = 0;
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Login',
+            icon: Icon(Icons.person),
+          ),
+          BottomNavigationBarItem(
+            label: 'calculator',
+            icon: Icon(Icons.calculate),
+          ),
+          BottomNavigationBarItem(
+            label: 'Plan and packages',
+            icon: Icon(Icons.calendar_month_outlined),
+          ),
+        ],
+        currentIndex: currentindex,
+        onTap: (int index) {
+          setState(() {
+            currentindex = index;
+          });
+        },
+        backgroundColor: Color(0xff5ac18e),
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0x665ac18e),
+                Color(0x995ac18e),
+                Color(0xcc5ac18e),
+                Color(0xff5ac18e),
+              ]),
+        ),
+        child: Center(
+          child: currentindex == 0
+              ? loginpage()
+              : currentindex == 1
+                  ? calculator()
+                  : schedule(),
+        ),
+      ),
+    );
   }
 }

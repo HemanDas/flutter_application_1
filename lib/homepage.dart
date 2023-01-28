@@ -23,6 +23,7 @@ class _FitnexState extends State<Fitnex> {
         elevation: 3.0,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             label: 'body',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/container.dart';
 import 'package:flutter_application_1/pages/loginpage.dart';
+import 'package:flutter_application_1/pages/personalpages/myprofile.dart';
 
 class Sidebar extends StatefulWidget {
   const Sidebar({super.key});
@@ -43,7 +44,14 @@ class _SidebarState extends State<Sidebar> {
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Profile'),
-              onTap: () => null,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => profile(),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.book),

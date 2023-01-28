@@ -115,6 +115,7 @@ class _BMIState extends State<BMI> {
                 Text(
                   _message,
                   textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 18),
                 )
               ],
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/BMI.dart';
-import 'package:flutter_application_1/pages/loginpage.dart';
+import 'package:flutter_application_1/pages/calculator/BMI.dart';
+import 'package:flutter_application_1/pages/calculator/Calorie_calculator.dart';
+// import 'package:flutter_application_1/pages/loginpage.dart';
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -43,69 +44,86 @@ class _calculatorState extends State<calculator> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.man_rounded,
-                    ),
-                    alignment: Alignment.topLeft,
-                    color: Colors.black,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BMI(),
+                  Column(
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.man_rounded,
                         ),
-                      );
-                    },
-                    iconSize: 80.0,
+                        alignment: Alignment.topLeft,
+                        color: Colors.black,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BMI(),
+                            ),
+                          );
+                        },
+                        iconSize: 80.0,
+                      ),
+                      const Text(
+                        'BMI',
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.egg_outlined,
-                    ),
-                    alignment: Alignment.topLeft,
-                    color: Colors.black,
-                    onPressed: () {},
-                    iconSize: 80.0,
+                  Column(
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.egg_outlined,
+                        ),
+                        alignment: Alignment.topLeft,
+                        color: Colors.black,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Caloriecalc(),
+                              ));
+                        },
+                        iconSize: 80.0,
+                      ),
+                      const Text(
+                        'Calorie\n intake',
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.bedroom_child,
-                    ),
-                    alignment: Alignment.topLeft,
-                    color: Colors.black,
-                    onPressed: () {},
-                    iconSize: 80.0,
+                  Column(
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.bedroom_child,
+                        ),
+                        alignment: Alignment.topLeft,
+                        color: Colors.black,
+                        onPressed: () {},
+                        iconSize: 80.0,
+                      ),
+                      const Text(
+                        'BMI',
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.bedroom_child,
-                    ),
-                    alignment: Alignment.topLeft,
-                    color: Colors.black,
-                    onPressed: () {},
-                    iconSize: 80.0,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  Text(
-                    'BMI',
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                  Text(
-                    'Calorie\n intake',
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                  Text(
-                    'BMI',
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                  Text(
-                    'BMI',
-                    style: TextStyle(fontSize: 20.0),
+                  Column(
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.bedroom_child,
+                        ),
+                        alignment: Alignment.topLeft,
+                        color: Colors.black,
+                        onPressed: () {},
+                        iconSize: 80.0,
+                      ),
+                      const Text(
+                        'BMI',
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                    ],
                   ),
                 ],
               ),

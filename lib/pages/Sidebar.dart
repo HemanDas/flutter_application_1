@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/container.dart';
 import 'package:flutter_application_1/pages/loginpage.dart';
 import 'package:flutter_application_1/pages/personalpages/myprofile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+final user =
+    FirebaseAuth.instance.currentUser!; //access users info from firebase
 
 class Sidebar extends StatefulWidget {
   const Sidebar({super.key});
@@ -28,7 +32,8 @@ class _SidebarState extends State<Sidebar> {
           children: [
             UserAccountsDrawerHeader(
               accountName: Text('Force Sujal'),
-              accountEmail: Text('sujalbhulaa@gmail.com'),
+              accountEmail:
+                  Text(user.email!), // display user email from firebase
               decoration: BoxDecoration(color: Color(0xff5ac18e)),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
@@ -69,14 +74,7 @@ class _SidebarState extends State<Sidebar> {
             ListTile(
               leading: Icon(Icons.logout),
               title: Text('Log Out'),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => navigate(),
-                  ),
-                );
-              },
+              onTap: () => FirebaseAuth.instance.signOut(),
             ),
           ],
         ),

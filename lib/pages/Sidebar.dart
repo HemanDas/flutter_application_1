@@ -1,11 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/container.dart';
 import 'package:flutter_application_1/pages/loginpage.dart';
 import 'package:flutter_application_1/pages/personalpages/myprofile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-final user =
-    FirebaseAuth.instance.currentUser!; //access users info from firebase
+import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 
 class Sidebar extends StatefulWidget {
   const Sidebar({super.key});
@@ -15,6 +14,16 @@ class Sidebar extends StatefulWidget {
 }
 
 class _SidebarState extends State<Sidebar> {
+  final user =
+      FirebaseAuth.instance.currentUser!; //access users info from firebase
+  CollectionReference User = FirebaseFirestore.instance.collection('users');
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -31,9 +40,8 @@ class _SidebarState extends State<Sidebar> {
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('Force Sujal'),
-              accountEmail:
-                  Text(user.email!), // display user email from firebase
+              accountName: Text('$firstname\t' + '$lastname'),
+              accountEmail: Text('$email'), // display user email from firebase
               decoration: BoxDecoration(color: Color(0xff5ac18e)),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(

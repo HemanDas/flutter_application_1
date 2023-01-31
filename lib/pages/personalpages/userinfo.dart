@@ -7,14 +7,17 @@ String? uid;
 String? firstname;
 String? lastname;
 String? email;
+String? img_url;
 
 void getData() async {
   User user = authen.currentUser!;
   uid = user.uid;
-  print('${user.email}');
   final DocumentSnapshot userDocs =
       await FirebaseFirestore.instance.collection('users').doc(uid).get();
   firstname = userDocs.get('first name');
   lastname = userDocs.get('last name');
   email = userDocs.get('email');
+  if (img_url != null) {
+    img_url = userDocs.get('imageUrl');
+  }
 }

@@ -45,12 +45,17 @@ class _SidebarState extends State<Sidebar> {
               decoration: BoxDecoration(color: Color(0xff5ac18e)),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
-                  child: Image.asset(
-                    'assets/sujal.jpg',
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover,
-                  ),
+                  child: img_url != null
+                      ? Image.asset(
+                          '$img_url',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        )
+                      : Icon(
+                          Icons.camera_enhance,
+                          size: 50,
+                        ),
                 ),
               ),
             ),

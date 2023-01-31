@@ -5,6 +5,7 @@ import 'package:flutter_application_1/main.dart';
 // import 'package:flutter_application_1/pages/Sidebar.dart';
 import 'package:flutter_application_1/homepage.dart';
 import 'package:flutter_application_1/pages/container.dart';
+import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 import 'package:flutter_application_1/pages/registerpage.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_application_1/pages/passwordreset.dart';
@@ -26,6 +27,7 @@ class _loginpageState extends State<loginpage> {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
+    getData();
   }
 
   Future signIn() async {

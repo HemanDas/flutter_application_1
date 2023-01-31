@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,11 +16,30 @@ class signup extends StatefulWidget {
 
 class _signupState extends State<signup> {
   final formKey = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final repasswordController = TextEditingController();
+  final firstnameController = TextEditingController();
+  final lastnameController = TextEditingController();
+  final ageController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    repasswordController.dispose();
+    firstnameController.dispose();
+    lastnameController.dispose();
+    ageController.dispose();
+    super.dispose();
+  }
+
   Future signUp() async {
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
+    final ispassValid = formKey1.currentState!.validate();
+    if (!ispassValid) return;
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -28,17 +48,119 @@ class _signupState extends State<signup> {
                   CircularProgressIndicator(), //showing loading indicator while logging in
             ));
     try {
+      // creates user
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim());
+
+      //add user details and make a database of user details with naming their own uid as file name
+      FirebaseAuth auth = FirebaseAuth.instance;
+      final User user = auth.currentUser!;
+      final uid = user.uid;
+      await FirebaseFirestore.instance.collection('users').doc(uid).set({
+        'id': uid,
+        'first name': firstnameController.text.trim(),
+        'last name': lastnameController.text.trim(),
+        'email': emailController.text.trim(),
+      });
     } on FirebaseAuthException catch (e) {
-      print(e);
+      // print(e);
 
       Utils.showSnackBar(e.message, 255, 0, 0,
           100); // shows error message when account is same
     }
     navigatorKey.currentState!.popUntil((route) =>
         route.isFirst); // removes the loading indicator when logged in
+  }
+
+  Widget buildfirstname() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'First Name',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: const [
+              BoxShadow(
+                  color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+            ],
+          ),
+          height: 60,
+          child: TextFormField(
+            controller: firstnameController,
+            keyboardType: TextInputType.name,
+            style: TextStyle(color: Colors.black87),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              hintText: 'Enter your First name',
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildlastname() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Last Name',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: const [
+              BoxShadow(
+                  color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+            ],
+          ),
+          height: 60,
+          child: TextFormField(
+            controller: lastnameController,
+            keyboardType: TextInputType.name,
+            style: TextStyle(color: Colors.black87),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              hintText: 'Enter your Last name',
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Widget buildemailregister() {
@@ -140,91 +262,57 @@ class _signupState extends State<signup> {
     );
   }
 
-  Widget buildusername() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Username',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-            ],
-          ),
-          height: 60,
-          child: const TextField(
-            keyboardType: TextInputType.name,
-            style: TextStyle(color: Colors.black87),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14),
-              prefixIcon: Icon(
-                Icons.person,
-                color: Colors.black,
-              ),
-              hintText: 'Enter username',
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget buildpasswordreenter() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Re-enter Password',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-            ],
-          ),
-          height: 60,
-          child: const TextField(
-            obscureText: true,
-            style: TextStyle(color: Colors.black87),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14),
-              prefixIcon: Icon(
-                Icons.key,
-                color: Colors.black,
-              ),
-              hintText: 'Enter your Password',
+    return Form(
+      key: formKey1,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Re-enter Password',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-      ],
+          const SizedBox(
+            height: 5,
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+              ],
+            ),
+            height: 60,
+            child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (password) => password != null &&
+                      password !=
+                          passwordController
+                              .text // gives a warning sign if a proper email is not given
+                  ? '    Password does not match.'
+                  : null,
+              obscureText: true,
+              style: TextStyle(color: Colors.black87),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(
+                  Icons.key,
+                  color: Colors.black,
+                ),
+                hintText: 'Enter your Password',
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -275,7 +363,7 @@ class _signupState extends State<signup> {
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 25,
-                    vertical: 120,
+                    vertical: 50,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -289,19 +377,23 @@ class _signupState extends State<signup> {
                         ),
                       ),
                       const SizedBox(
-                        height: 50,
-                      ),
-                      buildusername(),
-                      const SizedBox(
                         height: 20,
+                      ),
+                      buildfirstname(),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      buildlastname(),
+                      const SizedBox(
+                        height: 5,
                       ),
                       buildemailregister(),
                       const SizedBox(
-                        height: 20,
+                        height: 5,
                       ),
                       buildpasswordregister(),
                       const SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
                       buildpasswordreenter(),
                       const SizedBox(

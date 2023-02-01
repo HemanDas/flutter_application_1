@@ -61,14 +61,29 @@ class _profileState extends State<profile> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-                    height: 120,
-                    width: 120,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey,
-                    ),
-                  ),
+                      width: 120,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 4, color: Colors.white),
+                        boxShadow: [
+                          BoxShadow(
+                            spreadRadius: 2,
+                            blurRadius: 10,
+                            color: Colors.black.withOpacity(0.1),
+                          ),
+                        ],
+                        shape: BoxShape.circle,
+                      ),
+                      child: ClipOval(
+                          child: img_url != null
+                              ? Image.network(
+                                  img_url.toString(),
+                                  fit: BoxFit.cover,
+                                )
+                              : Icon(
+                                  Icons.camera_enhance,
+                                  size: 80,
+                                ))),
                   SizedBox(
                     height: 10,
                   ),

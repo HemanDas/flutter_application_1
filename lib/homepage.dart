@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Sidebar.dart';
 import 'package:flutter_application_1/pages/container.dart';
+import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 
 class Fitnex extends StatefulWidget {
   const Fitnex({super.key});
@@ -11,6 +12,13 @@ class Fitnex extends StatefulWidget {
 
 class _FitnexState extends State<Fitnex> {
   int currentindex = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

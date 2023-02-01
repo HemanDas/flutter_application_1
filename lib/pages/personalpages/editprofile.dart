@@ -17,11 +17,11 @@ class editprof extends StatefulWidget {
 }
 
 class _editprofState extends State<editprof> {
-  final firstnameeditController = TextEditingController();
-  final lastnameeditController = TextEditingController();
-  final ageController = TextEditingController();
-  final heightController = TextEditingController();
-  final weightController = TextEditingController();
+  final firstnameeditController = TextEditingController(text: firstname);
+  final lastnameeditController = TextEditingController(text: lastname);
+  final ageController = TextEditingController(text: age.toString());
+  final heightController = TextEditingController(text: height.toString());
+  final weightController = TextEditingController(text: weight.toString());
 
   // image access
   File? pickedImage;
@@ -42,28 +42,27 @@ class _editprofState extends State<editprof> {
                   CircularProgressIndicator(), //showing loading indicator while logging in
             ));
     try {
-      // creates user
-      if (pickedImage == null) {
-        Utils.showSnackBar('Please select an Image', 255, 0, 0, 100);
-      } else {
-        final ref = FirebaseStorage.instance
-            .ref()
-            .child("UsersImages")
-            .child(firstname! + lastname! + '.jpg');
-        await ref.putFile(pickedImage!);
-        url = await ref.getDownloadURL();
-      }
-
-      //add user details and make a database of user details with naming their own uid as file name
       FirebaseAuth auth = FirebaseAuth.instance;
       final User user = auth.currentUser!;
       final uid = user.uid;
+      if (pickedImage != null) {
+        final ref = FirebaseStorage.instance
+            .ref()
+            .child("UsersImages")
+            .child(firstname! + '.jpg');
+        await ref.putFile(pickedImage!);
+        url = await ref.getDownloadURL();
+        await FirebaseFirestore.instance.collection('users').doc(uid).update({
+          'imageUrl': url,
+        });
+      }
+
+      //add user details and make a database of user details with naming their own uid as file name
       await FirebaseFirestore.instance.collection('users').doc(uid).update(
         {
           'id': uid,
           'first name': firstnameeditController.text.trim(),
           'last name': lastnameeditController.text.trim(),
-          'imageUrl': url,
           'height': heightController.text.trim(),
           'weight': weightController.text.trim(),
           'age': ageController.text.trim(),

@@ -46,15 +46,17 @@ class _SidebarState extends State<Sidebar> {
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
                   child: img_url != null
-                      ? Image.asset(
-                          '$img_url',
+                      ? Image.network(
+                          img_url.toString(),
                           width: 100,
                           height: 100,
                           fit: BoxFit.cover,
                         )
-                      : Icon(
-                          Icons.camera_enhance,
-                          size: 50,
+                      : Container(
+                          color: Colors.grey[300],
+                          child: Center(
+                            child: Text("No Image"),
+                          ),
                         ),
                 ),
               ),
@@ -74,7 +76,9 @@ class _SidebarState extends State<Sidebar> {
             ListTile(
               leading: Icon(Icons.book),
               title: Text('Plans and Packages'),
-              onTap: () => null,
+              onTap: () {
+                print(height);
+              },
             ),
             ListTile(
               leading: Icon(Icons.settings),
@@ -91,64 +95,6 @@ class _SidebarState extends State<Sidebar> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class loggedoutsidebar extends StatefulWidget {
-  const loggedoutsidebar({super.key});
-
-  @override
-  State<loggedoutsidebar> createState() => _loggedoutsidebarState();
-}
-
-class _loggedoutsidebarState extends State<loggedoutsidebar> {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      backgroundColor: Color(0xff5ac18e),
-      child: ListView(
-        children: [
-          ListTile(
-            leading: Icon(
-              Icons.calculate,
-              color: Colors.white,
-            ),
-            title: Text(
-              'Calculator',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => calculator(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.book,
-              color: Colors.white,
-            ),
-            title: Text(
-              'Plans and packages',
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => calculator(),
-                ),
-              );
-            },
-          ),
-        ],
       ),
     );
   }

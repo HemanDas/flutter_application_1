@@ -17,6 +17,8 @@ class signup extends StatefulWidget {
 class _signupState extends State<signup> {
   final formKey = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
+  final formKeyfirstn = GlobalKey<FormState>();
+  final formKeylastn = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final repasswordController = TextEditingController();
@@ -40,6 +42,10 @@ class _signupState extends State<signup> {
     if (!isValid) return;
     final ispassValid = formKey1.currentState!.validate();
     if (!ispassValid) return;
+    final isfirstnValid = formKey.currentState!.validate();
+    if (!isfirstnValid) return;
+    final islastnValid = formKey1.currentState!.validate();
+    if (!islastnValid) return;
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -74,92 +80,106 @@ class _signupState extends State<signup> {
   }
 
   Widget buildfirstname() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'First Name',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-            ],
-          ),
-          height: 60,
-          child: TextFormField(
-            controller: firstnameController,
-            keyboardType: TextInputType.name,
-            style: TextStyle(color: Colors.black87),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14),
-              prefixIcon: Icon(
-                Icons.person,
-                color: Colors.black,
-              ),
-              hintText: 'Enter your First name',
+    return Form(
+      key: formKeyfirstn,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'First Name',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-      ],
+          const SizedBox(
+            height: 5,
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+              ],
+            ),
+            height: 60,
+            child: TextFormField(
+              controller: firstnameController,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (first) => first != null && first.length < 3
+                  ? '    Please fill up the form.'
+                  : null,
+              keyboardType: TextInputType.name,
+              style: TextStyle(color: Colors.black87),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(
+                  Icons.person,
+                  color: Colors.black,
+                ),
+                hintText: 'Enter your First name',
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget buildlastname() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Last Name',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-            ],
-          ),
-          height: 60,
-          child: TextFormField(
-            controller: lastnameController,
-            keyboardType: TextInputType.name,
-            style: TextStyle(color: Colors.black87),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14),
-              prefixIcon: Icon(
-                Icons.person,
-                color: Colors.black,
-              ),
-              hintText: 'Enter your Last name',
+    return Form(
+      key: formKeylastn,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Last Name',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-      ],
+          const SizedBox(
+            height: 5,
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+              ],
+            ),
+            height: 60,
+            child: TextFormField(
+              controller: lastnameController,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (last) => last != null && last.length < 3
+                  ? '    Please fill up the form.'
+                  : null,
+              keyboardType: TextInputType.name,
+              style: TextStyle(color: Colors.black87),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(
+                  Icons.person,
+                  color: Colors.black,
+                ),
+                hintText: 'Enter your Last name',
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

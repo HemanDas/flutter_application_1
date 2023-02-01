@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/personalpages/editprofile.dart';
 import 'package:flutter_application_1/pages/personalpages/firsttab.dart';
@@ -87,56 +89,76 @@ class _profileState extends State<profile> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text("$firstname \t" + '$lastname'),
+                  Text("$firstname \t" + '$lastname',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                      )),
                   SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
                   Divider(),
                   SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Text("Weight"),
-                            Text("82 kg"),
-                          ],
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text(
+                                "Weight",
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              Text("$weight kg",
+                                  style: TextStyle(fontSize: 15)),
+                            ],
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Text("Height"),
-                            Text("1.83 m"),
-                          ],
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text("Height", style: TextStyle(fontSize: 18)),
+                              Text("$height m", style: TextStyle(fontSize: 15)),
+                            ],
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Text("age"),
-                            Text("21"),
-                          ],
-                        ),
-                      )
-                    ],
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text("Age", style: TextStyle(fontSize: 18)),
+                              Text("$age", style: TextStyle(fontSize: 15)),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          Text("BMI"),
-                          Text("2034"),
-                        ],
-                      ),
-                    ],
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Text("BMI", style: TextStyle(fontSize: 18)),
+                            Text("2034", style: TextStyle(fontSize: 15)),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   Divider(),
                   TabBar(

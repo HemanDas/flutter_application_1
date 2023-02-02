@@ -2,8 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/main.dart';
-// import 'package:flutter_application_1/pages/Sidebar.dart';
-import 'package:flutter_application_1/homepage.dart';
 import 'package:flutter_application_1/pages/container.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 import 'package:flutter_application_1/pages/registerpage.dart';
@@ -23,6 +21,9 @@ class _loginpageState extends State<loginpage> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  int currentindex = 0;
+
+  @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
@@ -36,7 +37,7 @@ class _loginpageState extends State<loginpage> {
     showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) => Center(
+        builder: (context) => const Center(
               child:
                   CircularProgressIndicator(), //showing loading indicator while logging in
             ));
@@ -90,7 +91,7 @@ class _loginpageState extends State<loginpage> {
                   : null,
               controller: emailController,
               keyboardType: TextInputType.emailAddress,
-              style: TextStyle(color: Colors.black87),
+              style: const TextStyle(color: Colors.black87),
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
@@ -136,7 +137,7 @@ class _loginpageState extends State<loginpage> {
           child: TextField(
             controller: passwordController,
             obscureText: true,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
             decoration: const InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14),
@@ -248,7 +249,7 @@ class _loginpageState extends State<loginpage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => passreset(),
+              builder: (context) => const passreset(),
             ),
           );
         },
@@ -271,7 +272,7 @@ class _loginpageState extends State<loginpage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => signup(),
+              builder: (context) => const signup(),
             ),
           );
         },
@@ -287,43 +288,13 @@ class _loginpageState extends State<loginpage> {
     );
   }
 
-  Widget buildremcb() {
-    return Container(
-      height: 20,
-      child: Row(
-        children: [
-          Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
-            child: Checkbox(
-              value: isRememberMe,
-              checkColor: Colors.green,
-              activeColor: Colors.white,
-              onChanged: (value) {
-                setState(() {
-                  isRememberMe = value;
-                });
-              },
-            ),
-          ),
-          const Text(
-            'Remember Me',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget buildloginbutton() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Colors.white,
+          backgroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
         ),
         onPressed: signIn,
@@ -339,6 +310,56 @@ class _loginpageState extends State<loginpage> {
     );
   }
 
+  Widget buildlogin() {
+    return Container(
+        child: AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: GestureDetector(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: double.infinity,
+              width: double.infinity,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 25,
+                  vertical: 120,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Sign In',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    buildemail(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    buildpassword(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    buildForgotPassbutton(context),
+                    buildloginbutton(),
+                    buildsignupbutton(context),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -346,80 +367,6 @@ class _loginpageState extends State<loginpage> {
       //   backgroundColor: Color(0xff5ac18e),
       // ),
       // drawer: loggedoutsidebar(),
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0x665ac18e),
-                        Color(0x995ac18e),
-                        Color(0xcc5ac18e),
-                        Color(0xff5ac18e),
-                      ]),
-                ),
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 25,
-                    vertical: 120,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Sign In',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      buildemail(),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      buildpassword(),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      buildForgotPassbutton(context),
-                      buildremcb(),
-                      buildloginbutton(),
-                      buildsignupbutton(context),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class navigate extends StatefulWidget {
-  const navigate({super.key});
-
-  @override
-  State<navigate> createState() => _navigateState();
-}
-
-class _navigateState extends State<navigate> {
-  @override
-  int currentindex = 0;
-  Widget build(BuildContext context) {
-    return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
@@ -457,10 +404,10 @@ class _navigateState extends State<navigate> {
         ),
         child: Center(
           child: currentindex == 0
-              ? loginpage()
+              ? buildlogin()
               : currentindex == 1
-                  ? calculator()
-                  : schedule(),
+                  ? const calculator()
+                  : const schedule(),
         ),
       ),
     );

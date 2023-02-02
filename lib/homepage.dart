@@ -14,7 +14,6 @@ class _FitnexState extends State<Fitnex> {
   int currentindex = 0;
   @override
   void initState() {
-    // TODO: implement initState
     getData();
     super.initState();
   }
@@ -22,12 +21,12 @@ class _FitnexState extends State<Fitnex> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Sidebar(),
+      drawer: const Sidebar(),
       appBar: AppBar(
         title: const Text('Fitnex'),
         toolbarHeight: 40.0,
         centerTitle: true,
-        backgroundColor: Color(0xff5ac18e),
+        backgroundColor: const Color(0xff5ac18e),
         elevation: 3.0,
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -52,7 +51,7 @@ class _FitnexState extends State<Fitnex> {
             currentindex = index;
           });
         },
-        backgroundColor: Color(0xff5ac18e),
+        backgroundColor: const Color(0xff5ac18e),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -68,10 +67,10 @@ class _FitnexState extends State<Fitnex> {
         ),
         child: Center(
           child: currentindex == 0
-              ? Body()
+              ? const Body()
               : currentindex == 1
-                  ? calculator()
-                  : schedule(),
+                  ? const calculator()
+                  : const schedule(),
         ),
       ),
     );

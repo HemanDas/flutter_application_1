@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/pages/loginpage.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_application_1/pages/errormessage.dart';
@@ -49,7 +48,7 @@ class _signupState extends State<signup> {
     showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) => Center(
+        builder: (context) => const Center(
               child:
                   CircularProgressIndicator(), //showing loading indicator while logging in
             ));
@@ -114,8 +113,8 @@ class _signupState extends State<signup> {
                   ? '    Please fill up the form.'
                   : null,
               keyboardType: TextInputType.name,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
+              style: const TextStyle(color: Colors.black87),
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
@@ -166,8 +165,8 @@ class _signupState extends State<signup> {
                   ? '    Please fill up the form.'
                   : null,
               keyboardType: TextInputType.name,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
+              style: const TextStyle(color: Colors.black87),
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
@@ -220,7 +219,7 @@ class _signupState extends State<signup> {
                   : null,
               controller: emailController,
               keyboardType: TextInputType.emailAddress,
-              style: TextStyle(color: Colors.black87),
+              style: const TextStyle(color: Colors.black87),
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
@@ -266,7 +265,7 @@ class _signupState extends State<signup> {
           child: TextField(
             controller: passwordController,
             obscureText: true,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
             decoration: const InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14),
@@ -319,8 +318,8 @@ class _signupState extends State<signup> {
                   ? '    Password does not match.'
                   : null,
               obscureText: true,
-              style: TextStyle(color: Colors.black87),
-              decoration: InputDecoration(
+              style: const TextStyle(color: Colors.black87),
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
@@ -338,12 +337,12 @@ class _signupState extends State<signup> {
 
   Widget buildsignupbutton() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: const EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Colors.white,
-          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+          backgroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
         ),
         onPressed: signUp,
         child: const Text(

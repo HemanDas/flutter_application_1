@@ -1,12 +1,8 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter_application_1/homepage.dart';
-import 'package:flutter_application_1/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter_application_1/pages/errormessage.dart';
 
 class Verifyemail extends StatefulWidget {
@@ -30,7 +26,7 @@ class _VerifyemailState extends State<Verifyemail> {
       sendVerificationEmail();
       //setting time duration for email verification sent
       timer = Timer.periodic(
-        Duration(seconds: 3),
+        const Duration(seconds: 3),
         (_) => checkEmailVerified(),
       );
     }
@@ -61,68 +57,71 @@ class _VerifyemailState extends State<Verifyemail> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) => isEmailVerified
-      ? Fitnex()
-      : Scaffold(
-          body: AnnotatedRegion<SystemUiOverlayStyle>(
-            value: SystemUiOverlayStyle.light,
-            child: GestureDetector(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    height: double.infinity,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0x665ac18e),
-                            Color(0x995ac18e),
-                            Color(0xcc5ac18e),
-                            Color(0xff5ac18e),
-                          ]),
-                    ),
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 25,
-                        vertical: 120,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 70,
-                          ),
-                          const Text(
-                            'Verify Email',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 70,
-                          ),
-                          Center(
-                            child: const Text(
-                              'Verification email has been sent to your Email',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+  Widget buildverify() {
+    return Scaffold(
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: GestureDetector(
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0x665ac18e),
+                        Color(0x995ac18e),
+                        Color(0xcc5ac18e),
+                        Color(0xff5ac18e),
+                      ]),
+                ),
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 25,
+                    vertical: 120,
                   ),
-                ],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      SizedBox(
+                        height: 70,
+                      ),
+                      Text(
+                        'Verify Email',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 70,
+                      ),
+                      Center(
+                        child: Text(
+                          'Verification email has been sent to your Email',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-        );
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) =>
+      isEmailVerified ? const Fitnex() : buildverify();
 }

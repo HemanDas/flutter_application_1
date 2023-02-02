@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/loginpage.dart';
 import 'package:flutter/services.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_application_1/pages/registerpage.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/pages/errormessage.dart';
 
@@ -27,7 +25,7 @@ class _passresetState extends State<passreset> {
     showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) => Center(
+        builder: (context) => const Center(
               child:
                   CircularProgressIndicator(), //showing loading indicator while logging in
             ));
@@ -49,8 +47,8 @@ class _passresetState extends State<passreset> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: const Text(
+          const Center(
+            child: Text(
               'Enter your Email to receive \n     Password reset Link',
               style: TextStyle(
                 color: Colors.white,
@@ -82,7 +80,7 @@ class _passresetState extends State<passreset> {
                   : null,
               controller: emailController,
               keyboardType: TextInputType.emailAddress,
-              style: TextStyle(color: Colors.black87),
+              style: const TextStyle(color: Colors.black87),
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
@@ -105,7 +103,7 @@ class _passresetState extends State<passreset> {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Colors.white,
+          backgroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
         ),
         onPressed: resetpass,
@@ -151,7 +149,7 @@ class _passresetState extends State<passreset> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 70,
                       ),
                       const Text(
@@ -162,7 +160,7 @@ class _passresetState extends State<passreset> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       buildemailreset(),

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/personalpages/editprofile.dart';
 import 'package:flutter_application_1/pages/personalpages/firsttab.dart';
@@ -27,9 +25,9 @@ class _profileState extends State<profile> {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            title: Text("My Profile"),
+            title: const Text("My Profile"),
             centerTitle: true,
-            backgroundColor: Color(0xff5ac18e),
+            backgroundColor: const Color(0xff5ac18e),
             actions: [
               Padding(
                   padding: const EdgeInsets.only(right: 8.00),
@@ -38,11 +36,11 @@ class _profileState extends State<profile> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => editprof(),
+                            builder: (context) => const editprof(),
                           ),
                         );
                       },
-                      icon: Icon(Icons.edit)))
+                      icon: const Icon(Icons.edit)))
             ],
           ),
           body: Container(
@@ -82,23 +80,23 @@ class _profileState extends State<profile> {
                                   img_url.toString(),
                                   fit: BoxFit.cover,
                                 )
-                              : Icon(
+                              : const Icon(
                                   Icons.camera_enhance,
                                   size: 80,
                                 ))),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text("$firstname \t" + '$lastname',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w600,
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Divider(),
-                  SizedBox(
+                  const Divider(),
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
@@ -112,35 +110,38 @@ class _profileState extends State<profile> {
                         Expanded(
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 "Weight",
                                 style: TextStyle(fontSize: 18),
                               ),
                               Text("$weight kg",
-                                  style: TextStyle(fontSize: 15)),
+                                  style: const TextStyle(fontSize: 15)),
                             ],
                           ),
                         ),
                         Expanded(
                           child: Column(
                             children: [
-                              Text("Height", style: TextStyle(fontSize: 18)),
-                              Text("$height m", style: TextStyle(fontSize: 15)),
+                              const Text("Height",
+                                  style: TextStyle(fontSize: 18)),
+                              Text("$height m",
+                                  style: const TextStyle(fontSize: 15)),
                             ],
                           ),
                         ),
                         Expanded(
                           child: Column(
                             children: [
-                              Text("Age", style: TextStyle(fontSize: 18)),
-                              Text("$age", style: TextStyle(fontSize: 15)),
+                              const Text("Age", style: TextStyle(fontSize: 18)),
+                              Text("$age",
+                                  style: const TextStyle(fontSize: 15)),
                             ],
                           ),
                         )
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
@@ -152,7 +153,7 @@ class _profileState extends State<profile> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Column(
-                          children: [
+                          children: const [
                             Text("BMI", style: TextStyle(fontSize: 18)),
                             Text("2034", style: TextStyle(fontSize: 15)),
                           ],
@@ -160,8 +161,8 @@ class _profileState extends State<profile> {
                       ],
                     ),
                   ),
-                  Divider(),
-                  TabBar(
+                  const Divider(),
+                  const TabBar(
                     tabs: [
                       Tab(
                         icon: Icon(Icons.favorite),
@@ -174,7 +175,7 @@ class _profileState extends State<profile> {
                       )
                     ],
                   ),
-                  Expanded(
+                  const Expanded(
                     child: TabBarView(
                       children: [
                         Firsttab(),

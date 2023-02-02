@@ -34,7 +34,7 @@ class _CaloriecalcState extends State<Caloriecalc> {
   final _ageController =
       TextEditingController(); //the controller for the text field associated with weight
   // the message at the beginning
-  String _message = 'Please enter your height an weight';
+  String? _message;
 
   // This function is triggered when the user pressess the "Calculate" button
   void _calculate() {
@@ -100,9 +100,9 @@ class _CaloriecalcState extends State<Caloriecalc> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Calorie Calculator"),
+        title: const Text("Calorie Calculator"),
         centerTitle: true,
-        backgroundColor: Color(0xff5ac18e),
+        backgroundColor: const Color(0xff5ac18e),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -152,7 +152,7 @@ class _CaloriecalcState extends State<Caloriecalc> {
                 height: 15,
               ),
               TextField(
-                style: TextStyle(fontSize: 25),
+                style: const TextStyle(fontSize: 25),
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
                 decoration: const InputDecoration(
@@ -163,7 +163,7 @@ class _CaloriecalcState extends State<Caloriecalc> {
                 height: 15,
               ),
               TextField(
-                style: TextStyle(fontSize: 25),
+                style: const TextStyle(fontSize: 25),
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
                 decoration: const InputDecoration(
@@ -174,7 +174,7 @@ class _CaloriecalcState extends State<Caloriecalc> {
                 height: 15,
               ),
               TextField(
-                style: TextStyle(fontSize: 25),
+                style: const TextStyle(fontSize: 25),
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: false),
                 decoration: const InputDecoration(
@@ -216,15 +216,16 @@ class _CaloriecalcState extends State<Caloriecalc> {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xff5ac18e),
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  backgroundColor: const Color(0xff5ac18e),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 ),
                 onPressed: () {
                   _calculate();
                   showModalBottomSheet(
                       context: context,
                       isScrollControlled: true,
-                      builder: (BuildContext) {
+                      builder: (buildContext) {
                         return FractionallySizedBox(
                           heightFactor: 0.8,
                           child: Container(

@@ -47,9 +47,9 @@ class _BMIState extends State<BMI> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("BMI"),
+          title: const Text("BMI"),
           centerTitle: true,
-          backgroundColor: Color(0xff5ac18e),
+          backgroundColor: const Color(0xff5ac18e),
         ),
         body: Container(
           decoration: const BoxDecoration(
@@ -69,7 +69,7 @@ class _BMIState extends State<BMI> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 TextField(
-                  style: TextStyle(fontSize: 25),
+                  style: const TextStyle(fontSize: 25),
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
@@ -80,7 +80,7 @@ class _BMIState extends State<BMI> {
                   height: 20,
                 ),
                 TextField(
-                  style: TextStyle(fontSize: 25),
+                  style: const TextStyle(fontSize: 25),
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
@@ -92,15 +92,16 @@ class _BMIState extends State<BMI> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xff5ac18e),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    backgroundColor: const Color(0xff5ac18e),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 10),
                   ),
                   onPressed: () {
                     _calculate();
                     showModalBottomSheet(
                         context: context,
                         isScrollControlled: true,
-                        builder: (BuildContext) {
+                        builder: (buildContext) {
                           return FractionallySizedBox(
                             heightFactor: 0.8,
                             child: Container(
@@ -141,7 +142,7 @@ class _BMIState extends State<BMI> {
                                     Text(
                                       _message,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: 18),
+                                      style: const TextStyle(fontSize: 18),
                                     ),
                                   ],
                                 ),

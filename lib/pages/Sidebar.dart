@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/container.dart';
-import 'package:flutter_application_1/pages/loginpage.dart';
 import 'package:flutter_application_1/pages/personalpages/myprofile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
@@ -40,9 +38,9 @@ class _SidebarState extends State<Sidebar> {
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('$firstname\t' + '$lastname'),
+              accountName: Text('$firstname\t' '$lastname'),
               accountEmail: Text('$email'), // display user email from firebase
-              decoration: BoxDecoration(color: Color(0xff5ac18e)),
+              decoration: const BoxDecoration(color: Color(0xff5ac18e)),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
                   child: img_url != null
@@ -54,7 +52,7 @@ class _SidebarState extends State<Sidebar> {
                         )
                       : Container(
                           color: Colors.grey[300],
-                          child: Center(
+                          child: const Center(
                             child: Text("No Image"),
                           ),
                         ),
@@ -62,35 +60,33 @@ class _SidebarState extends State<Sidebar> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
+              leading: const Icon(Icons.person),
+              title: const Text('Profile'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => profile(),
+                    builder: (context) => const profile(),
                   ),
                 );
               },
             ),
             ListTile(
-              leading: Icon(Icons.book),
-              title: Text('Plans and Packages'),
-              onTap: () {
-                print(height);
-              },
+              leading: const Icon(Icons.book),
+              title: const Text('Plans and Packages'),
+              onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
               onTap: () => null,
             ),
-            Divider(
+            const Divider(
               color: Colors.grey,
             ),
             ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Log Out'),
+              leading: const Icon(Icons.logout),
+              title: const Text('Log Out'),
               onTap: () => FirebaseAuth.instance.signOut(),
             ),
           ],

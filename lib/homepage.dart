@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/pages/Sidebar.dart';
 import 'package:flutter_application_1/pages/container.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 import 'package:flutter_application_1/pages/workoutpage/workoutplan.dart';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class Fitnex extends StatefulWidget {
   const Fitnex({super.key});
@@ -17,7 +21,11 @@ class _FitnexState extends State<Fitnex> {
   void initState() {
     getData();
     super.initState();
+    FirebaseMessaging.instance.getInitialMessage();
+    FirebaseMessaging.onMessage.listen((event) {});
   }
+
+  Future getNotification() async {}
 
   @override
   Widget build(BuildContext context) {

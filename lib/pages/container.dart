@@ -56,7 +56,7 @@ class _calculatorState extends State<calculator> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => BMI(),
+                              builder: (context) => const BMI(),
                             ),
                           );
                         },
@@ -80,7 +80,7 @@ class _calculatorState extends State<calculator> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Caloriecalc(),
+                                builder: (context) => const Caloriecalc(),
                               ));
                         },
                         iconSize: 80.0,

@@ -15,8 +15,12 @@ String? img_url;
 Future getData() async {
   User user = authen.currentUser!;
   uid = user.uid;
-  final DocumentSnapshot userDocs =
-      await FirebaseFirestore.instance.collection('users').doc(uid).get();
+  final DocumentSnapshot userDocs = await FirebaseFirestore.instance
+      .collection('users')
+      .doc(uid)
+      .collection('userdocuments')
+      .doc('userinfo')
+      .get();
   {
     try {
       firstname = userDocs.get('first name');
@@ -31,6 +35,4 @@ Future getData() async {
       print('error');
     }
   }
-
-  print(userDocs.data());
 }

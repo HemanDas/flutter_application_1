@@ -62,7 +62,12 @@ class _signupState extends State<signup> {
       FirebaseAuth auth = FirebaseAuth.instance;
       final User user = auth.currentUser!;
       final uid = user.uid;
-      await FirebaseFirestore.instance.collection('users').doc(uid).set({
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('userdocuments')
+          .doc('userinfo')
+          .set({
         'id': uid,
         'first name': firstnameController.text.trim(),
         'last name': lastnameController.text.trim(),

@@ -51,13 +51,19 @@ class _editprofState extends State<editprof> {
             .child(firstname! + '.jpg');
         await ref.putFile(pickedImage!);
         url = await ref.getDownloadURL();
-        await FirebaseFirestore.instance.collection('users').doc(uid).update({
-          'imageUrl': url,
-        });
+        await FirebaseFirestore.instance.collection('users')
+          ..doc(uid).collection('userdocuments').doc('userinfo').update({
+            'imageUrl': url,
+          });
       }
 
       //add user details and make a database of user details with naming their own uid as file name
-      await FirebaseFirestore.instance.collection('users').doc(uid).update(
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('userdocuments')
+          .doc('userinfo')
+          .update(
         {
           'id': uid,
           'first name': firstnameeditController.text.trim(),
@@ -76,19 +82,7 @@ class _editprofState extends State<editprof> {
     navigatorKey.currentState!.popUntil((route) =>
         route.isFirst); // removes the loading indicator when logged in
   }
-  // void getcam() async {
-  //   var img = await image.pickImage(source: ImageSource.camera);
-  //   setState(() {
-  //     file = File(img!.path);
-  //   });
-  // }
 
-  // void getgallery() async {
-  //   var imgq = await image.pickImage(source: ImageSource.gallery);
-  //   setState(() {
-  //     file = File(imgq!.path);
-  //   });
-  // }
   Future pickImage(ImageSource imageType) async {
     try {
       final photo = await image.pickImage(source: imageType);

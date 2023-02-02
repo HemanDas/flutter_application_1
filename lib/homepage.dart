@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Sidebar.dart';
 import 'package:flutter_application_1/pages/container.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
+import 'package:flutter_application_1/pages/workoutpage/workoutplan.dart';
 
 class Fitnex extends StatefulWidget {
   const Fitnex({super.key});
@@ -44,6 +45,10 @@ class _FitnexState extends State<Fitnex> {
             label: 'Schedule',
             icon: Icon(Icons.calendar_month_outlined),
           ),
+          BottomNavigationBarItem(
+            label: 'Workout',
+            icon: Icon(Icons.fitness_center),
+          ),
         ],
         currentIndex: currentindex,
         onTap: (int index) {
@@ -70,7 +75,9 @@ class _FitnexState extends State<Fitnex> {
               ? const Body()
               : currentindex == 1
                   ? const calculator()
-                  : const schedule(),
+                  : currentindex == 2
+                      ? const schedule()
+                      : const workoutplan(),
         ),
       ),
     );

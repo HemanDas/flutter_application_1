@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "60781455012",
+    "project_id": "fitnex-209d5",
+    "storage_bucket": "fitnex-209d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60781455012:android:fd3a8c3c86814f552c2831",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60781455012-hj05u6cftv320evvnplqof844i2f28oa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkppdP3DD0jt6SqU_tiyt4BGnAcD4J664"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60781455012-hj05u6cftv320evvnplqof844i2f28oa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

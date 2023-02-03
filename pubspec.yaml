@@ -37,7 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   image_picker: ^0.8.6+1
-  camera: ^0.10.3
+  camera: ^0.9.4+5
   path_provider: ^2.0.12
   #Firebase Database
   cloud_firestore: ^4.3.1
@@ -47,7 +47,8 @@ dependencies:
   firebase_storage: ^11.0.10
   firebase_core: ^2.4.1
   firebase_messaging: ^14.2.1
-
+  heart_bpm: ^1.1.1+0
+  charts_flutter: ^0.12.0
 
   
   

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/calculator/BMI.dart';
 import 'package:flutter_application_1/pages/calculator/Calorie_calculator.dart';
+import 'package:flutter_application_1/pages/calculator/heartbpm.dart';
 // import 'package:flutter_application_1/pages/loginpage.dart';
 
 class Body extends StatefulWidget {
@@ -104,7 +105,13 @@ class _calculatorState extends State<calculator> {
                           ),
                           alignment: Alignment.topLeft,
                           color: Colors.black,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const heartbpm(),
+                                ));
+                          },
                           iconSize: 80.0,
                         ),
                         const Text(

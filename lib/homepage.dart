@@ -6,7 +6,7 @@ import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 import 'package:flutter_application_1/pages/workoutpage/workoutplan.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
 
 class Fitnex extends StatefulWidget {
   const Fitnex({super.key});

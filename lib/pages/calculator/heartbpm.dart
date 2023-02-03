@@ -26,6 +26,7 @@ class _heartbpmState extends State<heartbpm> {
         children: [
           isBPMEnabled
               ? dialog = HeartBPMDialog(
+                  alpha: 0.5,
                   context: context,
                   onRawData: (value) {
                     setState(() {
@@ -51,13 +52,19 @@ class _heartbpmState extends State<heartbpm> {
               ? Container(
                   decoration: BoxDecoration(border: Border.all()),
                   height: 180,
+                  width: 300,
                   child: BPMChart(data),
                 )
-              : SizedBox(),
+              : SizedBox(
+                  height: 10,
+                ),
           isBPMEnabled && bpmValues.isNotEmpty
               ? Container(
                   decoration: BoxDecoration(border: Border.all()),
-                  constraints: BoxConstraints.expand(height: 180),
+                  constraints: BoxConstraints.expand(
+                    height: 180,
+                    width: 300,
+                  ),
                   child: BPMChart(bpmValues),
                 )
               : SizedBox(),

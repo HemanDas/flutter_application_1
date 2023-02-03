@@ -19,10 +19,10 @@ class _CaloriecalcState extends State<Caloriecalc> {
   //dropdown variables for gender
   final _Exercise = [
     "Little or no exercise",
-    "Lightly active(sports 1-3 days/week)",
-    "Moderate active(sports 3-5 days/week)",
-    "Very active(sports 6-7 days/week)",
-    "Extra active (sports & physical job)"
+    "Lightly active\n(sports 1-3 days/week)",
+    "Moderate active\n(sports 3-5 days/week)",
+    "Very active\n(sports 6-7 days/week)",
+    "Extra active \n(sports & physical job)"
   ];
   String? _selectVal = "";
   //

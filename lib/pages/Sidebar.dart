@@ -31,8 +31,8 @@ class _SidebarState extends State<Sidebar> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0x665ac18e),
-                Color(0xff5ac18e),
+                Color(0x66c5cae9),
+                Color(0xffede7f6),
               ]),
         ),
         child: ListView(
@@ -40,7 +40,7 @@ class _SidebarState extends State<Sidebar> {
             UserAccountsDrawerHeader(
               accountName: Text('$firstname\t' '$lastname'),
               accountEmail: Text('$email'), // display user email from firebase
-              decoration: const BoxDecoration(color: Color(0xff5ac18e)),
+              decoration: const BoxDecoration(color: Color(0xffb39ddb)),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
                   child: img_url != null

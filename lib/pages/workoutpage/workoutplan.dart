@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 
-class workoutplan extends StatefulWidget {
-  const workoutplan({super.key});
-
+class WorkoutPlan extends StatefulWidget {
   @override
-  State<workoutplan> createState() => _workoutplanState();
+  _WorkoutPlanState createState() => _WorkoutPlanState();
 }
 
-class _workoutplanState extends State<workoutplan> {
-  final Exercise = [
-    "Little or no exercise",
-    "Lightly active(sports 1-3 days/week)",
-    "Moderate active(sports 3-5 days/week)",
-    "Very active(sports 6-7 days/week)",
-    "Extra active (sports & physical job)"
-  ];
+class _WorkoutPlanState extends State<WorkoutPlan> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(),
+      body: Container(
+
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/image1.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
     );
   }
 }
+
+

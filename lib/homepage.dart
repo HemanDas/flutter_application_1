@@ -35,7 +35,7 @@ class _FitnexState extends State<Fitnex> {
         title: const Text('Fitnex'),
         toolbarHeight: 40.0,
         centerTitle: true,
-        backgroundColor: const Color(0xff5ac18e),
+        backgroundColor: const Color(0xffbfbca4),
         elevation: 3.0,
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -64,18 +64,22 @@ class _FitnexState extends State<Fitnex> {
             currentindex = index;
           });
         },
-        backgroundColor: const Color(0xff5ac18e),
+        backgroundColor: const Color(0xff8da888),
       ),
       body: Container(
         decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/image2.png"),
+            fit: BoxFit.cover,
+          ),
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0x665ac18e),
-                Color(0x995ac18e),
-                Color(0xcc5ac18e),
-                Color(0xff5ac18e),
+                Color(0xff8da8d6),
+                Color(0xff8da8d6),
+                Color(0xff8da8d6),
+                Color(0xff8da8d6),
               ]),
         ),
         child: Center(
@@ -85,7 +89,7 @@ class _FitnexState extends State<Fitnex> {
                   ? const calculator()
                   : currentindex == 2
                       ? const schedule()
-                      : const workoutplan(),
+                      : WorkoutPlan(),
         ),
       ),
     );

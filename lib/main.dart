@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/Verifypage.dart';
 import 'package:flutter_application_1/pages/loginpage.dart';
 import 'package:flutter_application_1/pages/errormessage.dart';
 
+
 //global navigator key
 final navigatorKey = GlobalKey<NavigatorState>();
 //

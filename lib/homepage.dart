@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/pages/Sidebar.dart';
 import 'package:flutter_application_1/pages/container.dart';
+import 'package:flutter_application_1/pages/exercise/exercise.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 import 'package:flutter_application_1/pages/workoutpage/workoutplan.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
-
 
 class Fitnex extends StatefulWidget {
   const Fitnex({super.key});
@@ -35,7 +34,7 @@ class _FitnexState extends State<Fitnex> {
         title: const Text('Fitnex'),
         toolbarHeight: 40.0,
         centerTitle: true,
-        backgroundColor: const Color(0xffbfbca4),
+        backgroundColor: const Color(0xff5ac18e),
         elevation: 3.0,
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -64,27 +63,23 @@ class _FitnexState extends State<Fitnex> {
             currentindex = index;
           });
         },
-        backgroundColor: const Color(0xff8da888),
+        backgroundColor: const Color(0xff5ac18e),
       ),
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/image2.png"),
-            fit: BoxFit.cover,
-          ),
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xff8da8d6),
-                Color(0xff8da8d6),
-                Color(0xff8da8d6),
-                Color(0xff8da8d6),
+                Color(0x665ac18e),
+                Color(0x995ac18e),
+                Color(0xcc5ac18e),
+                Color(0xff5ac18e),
               ]),
         ),
         child: Center(
           child: currentindex == 0
-              ? const Body()
+              ? const Exercise()
               : currentindex == 1
                   ? const calculator()
                   : currentindex == 2

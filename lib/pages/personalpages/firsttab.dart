@@ -36,15 +36,27 @@ class _FirsttabState extends State<Firsttab> {
     final double? week3 = double.tryParse(week3Controller.value.text);
     final double? week4 = double.tryParse(week4Controller.value.text);
     final interpreter = await Interpreter.fromAsset('weightprediction.tflite');
-    var input = [
-      [week1, week2, week3, week4]
-    ];
-    var output = List.filled(1, 0).reshape([1, 1]);
-    interpreter.run(input, output);
-    print(output[0][0]);
-    this.setState(() {
-      predvalue = output[0][0].toString();
-    });
+
+    if (week1 == null ||
+        week1 <= 0 ||
+        week2 == null ||
+        week2 <= 0 ||
+        week3 == null ||
+        week3 <= 0 ||
+        week4 == null ||
+        week4 <= 0) {
+      return;
+    } else {
+      var input = [
+        [week1, week2, week3, week4]
+      ];
+      var output = List.filled(1, 0).reshape([1, 1]);
+      interpreter.run(input, output);
+      print(output[0][0]);
+      this.setState(() {
+        predvalue = output[0][0].toString();
+      });
+    }
   }
 
   @override
@@ -66,8 +78,7 @@ class _FirsttabState extends State<Firsttab> {
                 },
                 child: Text('predict'),
               ),
-              Text("change the input values in code to get the prediction"),
-              Text(predvalue.toString())
+              Text(predvalue)
             ],
           ),
         ),

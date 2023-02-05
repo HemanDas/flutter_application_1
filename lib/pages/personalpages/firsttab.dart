@@ -10,16 +10,34 @@ class Firsttab extends StatefulWidget {
 
 class _FirsttabState extends State<Firsttab> {
   var predvalue = '';
+  final week1Controller = TextEditingController();
+  final week2Controller = TextEditingController();
+  final week3Controller = TextEditingController();
+  final week4Controller = TextEditingController();
   @override
   void initState() {
     super.initState();
     predvalue = 'click predict button';
   }
 
+  Widget buildweek(controllesr) {
+    return TextFormField(
+      controller: controllesr,
+      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      style: const TextStyle(color: Colors.black87),
+      decoration: const InputDecoration(
+          labelText: "week", border: OutlineInputBorder()),
+    );
+  }
+
   Future<void> predData() async {
+    final double? week1 = double.tryParse(week1Controller.value.text);
+    final double? week2 = double.tryParse(week2Controller.value.text);
+    final double? week3 = double.tryParse(week3Controller.value.text);
+    final double? week4 = double.tryParse(week4Controller.value.text);
     final interpreter = await Interpreter.fromAsset('weightprediction.tflite');
     var input = [
-      [95.5, 93.0, 92.0, 90.0]
+      [week1, week2, week3, week4]
     ];
     var output = List.filled(1, 0).reshape([1, 1]);
     interpreter.run(input, output);
@@ -31,26 +49,27 @@ class _FirsttabState extends State<Firsttab> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: Container(
-        child: Column(
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 100, vertical: 50),
-              child: ElevatedButton(
+        child: Container(
+          child: Column(
+            children: [
+              // buildweek1(),
+
+              buildweek(week1Controller),
+              buildweek(week2Controller),
+              buildweek(week3Controller),
+              buildweek(week4Controller),
+              ElevatedButton(
                 onPressed: () {
                   predData();
                 },
                 child: Text('predict'),
               ),
-            ),
-            Text("change the input values in code to get the prediction"),
-            SizedBox(
-              height: 30,
-            ),
-            Text('$predvalue')
-          ],
+              Text("change the input values in code to get the prediction"),
+              Text(predvalue.toString())
+            ],
+          ),
         ),
       ),
     );

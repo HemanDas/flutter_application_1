@@ -14,11 +14,6 @@ class Instructions extends StatefulWidget {
 }
 
 class _InstructionsState extends State<Instructions> {
-  bool _ischecked1 = false;
-  bool _ischecked2 = false;
-  bool _ischecked3 = false;
-  bool _ischeckedall = true;
-  String checkedvalue = '';
   @override
   Widget build(BuildContext context) {
     CollectionReference listexercise =

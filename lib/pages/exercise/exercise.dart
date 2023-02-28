@@ -14,7 +14,7 @@ class Exercise extends StatefulWidget {
 class _ExerciseState extends State<Exercise> {
   @override
   CollectionReference exercise =
-      FirebaseFirestore.instance.collection('Exercise');
+      FirebaseFirestore.instance.collection('Exercises');
 
   Stream<QuerySnapshot>? streamexercise;
   void initState() {
@@ -32,20 +32,28 @@ class _ExerciseState extends State<Exercise> {
         }
         if (snapshot.connectionState == ConnectionState.active) {
           QuerySnapshot querySnapshot = snapshot.data;
-          List<QueryDocumentSnapshot> listQueryDocumentSnapshot =
-              querySnapshot.docs;
-          return ListView.builder(
-              itemCount: listQueryDocumentSnapshot.length,
+
+          List<String> bodyPart = querySnapshot.docs
+              .map((doc) => doc['bodyPart'].toString())
+              .toSet()
+              .toList();
+          return GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // Set the number of columns in the grid
+                crossAxisSpacing: 1, // Set the spacing between columns
+                mainAxisSpacing: 20, // Set the spacing between rows
+                childAspectRatio: 2, // Set the aspect ratio of each item
+              ),
+              itemCount: bodyPart.length,
               itemBuilder: (context, index) {
-                QueryDocumentSnapshot document =
-                    listQueryDocumentSnapshot[index];
+                String Body = bodyPart[index];
                 return InkWell(
                   onTap: (() {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => listexercise(
-                          value: document['name'],
+                          value: Body,
                         ),
                       ),
                     );
@@ -65,7 +73,7 @@ class _ExerciseState extends State<Exercise> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              document['name'],
+                              Body,
                               textAlign: TextAlign.center,
                             ),
                           ],

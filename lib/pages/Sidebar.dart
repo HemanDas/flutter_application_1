@@ -43,20 +43,14 @@ class _SidebarState extends State<Sidebar> {
               decoration: const BoxDecoration(color: Color(0xffb39ddb)),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
-                  child: img_url != null
-                      ? Image.network(
-                          img_url.toString(),
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
-                        )
-                      : Container(
-                          color: Colors.grey[300],
-                          child: const Center(
-                            child: Text("No Image"),
-                          ),
-                        ),
-                ),
+                    child: img_url != null
+                        ? Image.network(
+                            img_url.toString(),
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          )
+                        : CircularProgressIndicator()),
               ),
             ),
             ListTile(

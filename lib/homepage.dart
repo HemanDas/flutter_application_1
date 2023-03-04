@@ -8,7 +8,7 @@ import 'package:flutter_application_1/pages/workoutpage/workoutplan.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class Fitnex extends StatefulWidget {
-  const Fitnex({super.key});
+  const Fitnex({Key? key}) : super(key: key);
 
   @override
   State<Fitnex> createState() => _FitnexState();
@@ -66,16 +66,16 @@ class _FitnexState extends State<Fitnex> {
         backgroundColor: const Color(0xff5ac18e),
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0x665ac18e),
-                Color(0x995ac18e),
-                Color(0xcc5ac18e),
-                Color(0xff5ac18e),
-              ]),
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              const Color(0xff5ac18e),
+              const Color(0xff63d471),
+              const Color(0xff70e5a5),
+            ],
+          ),
         ),
         child: Center(
           child: currentindex == 0

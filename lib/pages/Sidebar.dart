@@ -5,15 +5,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 
 class Sidebar extends StatefulWidget {
-  const Sidebar({super.key});
+  const Sidebar({Key? key}) : super(key: key);
 
   @override
   State<Sidebar> createState() => _SidebarState();
 }
 
 class _SidebarState extends State<Sidebar> {
-  final user =
-      FirebaseAuth.instance.currentUser!; //access users info from firebase
+  final user = FirebaseAuth.instance.currentUser!;
+
   CollectionReference User = FirebaseFirestore.instance.collection('users');
 
   @override
@@ -31,16 +31,17 @@ class _SidebarState extends State<Sidebar> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0x66c5cae9),
-                Color(0xffede7f6),
+                Color(0xff5ac18e),
+                Color(0xff63d471),
+                Color(0xff70e5a5),
               ]),
         ),
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
               accountName: Text('$firstname\t' '$lastname'),
-              accountEmail: Text('$email'), // display user email from firebase
-              decoration: const BoxDecoration(color: Color(0xffb39ddb)),
+              accountEmail: Text('$email'),
+              decoration: const BoxDecoration(color: Color(0xff5ac18e)),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
                   child: img_url != null

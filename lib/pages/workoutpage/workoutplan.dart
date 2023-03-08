@@ -6,12 +6,10 @@ class WorkoutPlan extends StatefulWidget {
 }
 
 class _WorkoutPlanState extends State<WorkoutPlan> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/image1.png"),
@@ -22,5 +20,3 @@ class _WorkoutPlanState extends State<WorkoutPlan> {
     );
   }
 }
-
-

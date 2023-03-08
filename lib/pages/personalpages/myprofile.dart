@@ -6,7 +6,7 @@ import 'package:flutter_application_1/pages/personalpages/thirdtab.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 
 class profile extends StatefulWidget {
-  const profile({super.key});
+  const profile({Key? key}) : super(key: key);
 
   @override
   State<profile> createState() => _profileState();

@@ -16,7 +16,6 @@ class Fitnex extends StatefulWidget {
 
 class _FitnexState extends State<Fitnex> {
   int currentindex = 0;
-
   @override
   void initState() {
     getData();
@@ -27,23 +26,10 @@ class _FitnexState extends State<Fitnex> {
 
   Future getNotification() async {}
 
-  Widget _getCurrentWidget(int index) {
-    switch (index) {
-      case 0:
-        return const Exercise();
-      case 1:
-        return const calculator();
-      case 2:
-        return const schedule();
-      default:
-        return WorkoutPlan();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Sidebar(),
+      drawer: const Sidebar(),
       appBar: AppBar(
         title: const Text('Fitnex'),
         toolbarHeight: 40.0,
@@ -92,7 +78,13 @@ class _FitnexState extends State<Fitnex> {
           ),
         ),
         child: Center(
-          child: _getCurrentWidget(currentindex),
+          child: currentindex == 0
+              ? const Exercise()
+              : currentindex == 1
+                  ? const calculator()
+                  : currentindex == 2
+                      ? const schedule()
+                      : WorkoutPlan(),
         ),
       ),
     );

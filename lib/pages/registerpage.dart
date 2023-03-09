@@ -6,7 +6,6 @@ import 'package:flutter_application_1/main.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_application_1/pages/errormessage.dart';
 
-
 class signup extends StatefulWidget {
   const signup({super.key});
 
@@ -49,11 +48,10 @@ class _signupState extends State<signup> {
     showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) =>
-        const Center(
-          child:
-          CircularProgressIndicator(), //showing loading indicator while logging in
-        ));
+        builder: (context) => const Center(
+              child:
+                  CircularProgressIndicator(), //showing loading indicator while logging in
+            ));
     try {
       // creates user
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -82,7 +80,7 @@ class _signupState extends State<signup> {
           100); // shows error message when account is same
     }
     navigatorKey.currentState!.popUntil((route) =>
-    route.isFirst); // removes the loading indicator when logged in
+        route.isFirst); // removes the loading indicator when logged in
   }
 
   Widget buildfirstname() {
@@ -116,8 +114,7 @@ class _signupState extends State<signup> {
             child: TextFormField(
               controller: firstnameController,
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (first) =>
-              first != null && first.length < 3
+              validator: (first) => first != null && first.length < 3
                   ? '    Please fill up the form.'
                   : null,
               keyboardType: TextInputType.name,
@@ -169,8 +166,7 @@ class _signupState extends State<signup> {
             child: TextFormField(
               controller: lastnameController,
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (last) =>
-              last != null && last.length < 3
+              validator: (last) => last != null && last.length < 3
                   ? '    Please fill up the form.'
                   : null,
               keyboardType: TextInputType.name,
@@ -221,10 +217,9 @@ class _signupState extends State<signup> {
             height: 60,
             child: TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (email) =>
-              email != null &&
-                  !EmailValidator.validate(
-                      email) // gives a warning sign if a proper email is not given
+              validator: (email) => email != null &&
+                      !EmailValidator.validate(
+                          email) // gives a warning sign if a proper email is not given
                   ? '    Enter a valid email'
                   : null,
               controller: emailController,
@@ -321,11 +316,10 @@ class _signupState extends State<signup> {
             height: 60,
             child: TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (password) =>
-              password != null &&
-                  password !=
-                      passwordController
-                          .text // gives a warning sign if a proper email is not given
+              validator: (password) => password != null &&
+                      password !=
+                          passwordController
+                              .text // gives a warning sign if a proper email is not given
                   ? '    Password does not match.'
                   : null,
               obscureText: true,
@@ -346,99 +340,98 @@ class _signupState extends State<signup> {
     );
   }
 
-
-    Widget buildsignupbutton() {
+  Widget buildsignupbutton() {
     return Container(
-    padding: const EdgeInsets.symmetric(vertical: 25),
-    width: double.infinity,
-    child: ElevatedButton(
-    style: ElevatedButton.styleFrom(
-    backgroundColor: Colors.white,
-    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-    ),
-    onPressed: signUp,
-    child: const Text(
-    'Register',
-    style: TextStyle(
-    color: Color(0xff5ac18e),
-    fontSize: 18,
-    fontWeight: FontWeight.bold,
-    ),
-    ),
-    ),
+      padding: const EdgeInsets.symmetric(vertical: 25),
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+        ),
+        onPressed: signUp,
+        child: const Text(
+          'Register',
+          style: TextStyle(
+            color: Color(0xff5ac18e),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
-    }
-
-    @override
-    Widget build(BuildContext context) {
-    return Scaffold(
-    body: AnnotatedRegion<SystemUiOverlayStyle>(
-    value: SystemUiOverlayStyle.light,
-    child: GestureDetector(
-    child: Stack(
-    children: <Widget>[
-    Container(
-    height: double.infinity,
-    width: double.infinity,
-    decoration: const BoxDecoration(
-    gradient: LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-    Color(0x665ac18e),
-    Color(0x995ac18e),
-    Color(0xcc5ac18e),
-    Color(0xff5ac18e),
-    ]),
-    ),
-    child: SingleChildScrollView(
-    padding: const EdgeInsets.symmetric(
-    horizontal: 25,
-    vertical: 50,
-    ),
-    child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-    const Text(
-    'Sign Up',
-    style: TextStyle(
-    color: Colors.white,
-    fontSize: 40,
-    fontWeight: FontWeight.bold,
-    ),
-    ),
-    const SizedBox(
-    height: 20,
-    ),
-    buildfirstname(),
-    const SizedBox(
-    height: 5,
-    ),
-    buildlastname(),
-    const SizedBox(
-    height: 5,
-    ),
-    buildemailregister(),
-    const SizedBox(
-    height: 5,
-    ),
-    buildpasswordregister(),
-    const SizedBox(
-    height: 5,
-    ),
-    buildpasswordreenter(),
-    const SizedBox(
-    height: 10,
-    ),
-    buildsignupbutton(),
-    ],
-    ),
-    ),
-    ),
-    ],
-    ),
-    ),
-    ),
-    );
-    }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: GestureDetector(
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0x665ac18e),
+                        Color(0x995ac18e),
+                        Color(0xcc5ac18e),
+                        Color(0xff5ac18e),
+                      ]),
+                ),
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 25,
+                    vertical: 50,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      buildfirstname(),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      buildlastname(),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      buildemailregister(),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      buildpasswordregister(),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      buildpasswordreenter(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      buildsignupbutton(),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

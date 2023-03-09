@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/personalpages/myprofile.dart';
+import 'package:flutter_application_1/pages/personalpages/Settings.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 
@@ -80,7 +82,14 @@ class _SidebarState extends State<Sidebar> {
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
-              onTap: () => null,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Setting(),
+                  ),
+                );
+              },
             ),
             const Divider(
               color: Colors.grey,
@@ -92,6 +101,22 @@ class _SidebarState extends State<Sidebar> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My App'),
+        ),
+        drawer: Sidebar(),
+        body: Container(),
       ),
     );
   }

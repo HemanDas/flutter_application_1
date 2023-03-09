@@ -14,12 +14,3 @@ class Utils {
       ..showSnackBar(snackBar);
   }
 }
-
-class ErrorMessage extends StatelessWidget {
-  const ErrorMessage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text('An error occurred.');
-  }
-}

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/personalpages/myprofile.dart';
-import 'package:flutter_application_1/pages/personalpages/Settings.dart';
+import 'package:flutter_application_1/pages/personalpages/fitnesstracker.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
@@ -81,12 +81,12 @@ class _SidebarState extends State<Sidebar> {
             ),
             ListTile(
               leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
+              title: const Text('Fitness Tracker'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Setting(),
+                    builder: (context) => FitnessTracker(),
                   ),
                 );
               },

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Sidebar.dart';
 
 void main() {
-  runApp(const Setting());
+  runApp(const FitnessTracker());
 }
 
-class Setting extends StatelessWidget {
-  const Setting({super.key});
+class FitnessTracker extends StatelessWidget {
+  const FitnessTracker({super.key});
 
   @override
   Widget build(BuildContext context) {

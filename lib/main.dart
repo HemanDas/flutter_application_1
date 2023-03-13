@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_application_1/pages/Verifypage.dart';
 import 'package:flutter_application_1/pages/loginpage.dart';
 import 'package:flutter_application_1/pages/errormessage.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 //global navigator key
 final navigatorKey = GlobalKey<NavigatorState>();

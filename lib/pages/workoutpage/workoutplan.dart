@@ -3,7 +3,6 @@ import 'package:flutter_application_1/pages/Sidebar.dart';
 import 'package:flutter_application_1/pages/container.dart';
 import 'package:flutter_application_1/pages/exercise/exercise.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
-import 'package:flutter_application_1/pages/workoutpage/workoutplan.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 

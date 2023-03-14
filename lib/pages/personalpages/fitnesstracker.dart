@@ -22,7 +22,7 @@ class FitnessTracker extends StatelessWidget {
       title: 'Fitness Tracker',
       theme: ThemeData(
           fontFamily: 'Poppins',
-          textTheme: TextTheme(
+          textTheme: const TextTheme(
             headline1: TextStyle(
               fontSize: 14,
               color: Colors.black,

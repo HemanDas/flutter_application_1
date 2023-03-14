@@ -22,7 +22,7 @@ class FitnessProgram {
 
 final List<FitnessProgram> fitnessProgram = [
   FitnessProgram(
-    image: AssetImage('assets/running.jpg'),
+    image: const AssetImage('assets/running.jpg'),
     name: 'Cardio',
     cals: '220kkal',
     time: '20min',

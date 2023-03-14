@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/personalpages/details/widgets/graph.dart';
-import 'package:flutter_application_1/pages/personalpages/details/widgets/info.dart';
+import 'package:flutter_application_1/pages/personalpages/details/widgets/info.dart'
+    hide Stats;
 import 'package:flutter_application_1/pages/personalpages/details/widgets/stats.dart';
 import 'package:flutter_application_1/pages/personalpages/details/widgets/steps.dart';
 
@@ -14,16 +15,23 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: MainApppBar(
         appBar: AppBar(),
       ),
       body: Column(
-        children: [
+        children: const [
           Dates(),
           Steps(),
           Graph(),
           Info(),
+          Divider(
+            height: 30,
+          ),
           Stats(),
+          SizedBox(
+            height: 30,
+          ),
           BottomNavigation(),
         ],
       ),

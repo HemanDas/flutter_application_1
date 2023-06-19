@@ -8,14 +8,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/pages/errormessage.dart';
 import 'package:flutter_application_1/main.dart';
 
-class editprof extends StatefulWidget {
-  const editprof({super.key});
+class Editprof extends StatefulWidget {
+  const Editprof({super.key});
 
   @override
-  State<editprof> createState() => _editprofState();
+  State<Editprof> createState() => _EditprofState();
 }
 
-class _editprofState extends State<editprof> {
+class _EditprofState extends State<Editprof> {
   final firstnameeditController = TextEditingController(text: firstname);
   final lastnameeditController = TextEditingController(text: lastname);
   final ageController = TextEditingController(text: age.toString());

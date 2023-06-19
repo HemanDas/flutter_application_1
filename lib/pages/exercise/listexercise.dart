@@ -16,8 +16,6 @@ class _listexerciseState extends State<listexercise> {
     CollectionReference listexercise =
         FirebaseFirestore.instance.collection('Exercises');
 
-    // Stream<QuerySnapshot> streamlistexercise =
-    //     listexercise.where('difficulty', isEqualTo: checkedvalue).snapshots();
     Stream<QuerySnapshot> streamlistexercise =
         listexercise.where('bodyPart', isEqualTo: widget.value).snapshots();
 

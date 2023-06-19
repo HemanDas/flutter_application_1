@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/Recommendation/recommendationfetch.dart';
 import 'package:flutter_application_1/pages/exercise/listexercise.dart';
+import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 
 String? Exercisename;
 
@@ -19,6 +21,8 @@ class _ExerciseState extends State<Exercise> {
   Stream<QuerySnapshot>? streamexercise;
   void initState() {
     super.initState();
+    fetches();
+    getData();
     streamexercise = exercise.snapshots();
   }
 

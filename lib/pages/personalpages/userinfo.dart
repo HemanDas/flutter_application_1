@@ -11,6 +11,7 @@ String? age;
 String? height;
 String? weight;
 String? img_url;
+List<dynamic>? notificationdetails;
 
 Future getData() async {
   User user = authen.currentUser!;
@@ -31,6 +32,21 @@ Future getData() async {
       height = userDocs.get('height');
       userDocs.get('imageUrl');
       img_url = userDocs.get('imageUrl');
+    } catch (e) {
+      print('error');
+    }
+  }
+  final DocumentSnapshot notif = await FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser!.uid)
+      .collection('userdocuments')
+      .doc('calenderplan')
+      .collection('exerciseday')
+      .doc(DateTime.now().toString().split(" ")[0])
+      .get();
+  {
+    try {
+      notificationdetails = notif.get('Title');
     } catch (e) {
       print('error');
     }

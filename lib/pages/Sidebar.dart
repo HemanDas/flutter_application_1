@@ -40,7 +40,7 @@ class _SidebarState extends State<Sidebar> {
             UserAccountsDrawerHeader(
               accountName: Text('$firstname\t' '$lastname'),
               accountEmail: Text('$email'), // display user email from firebase
-              decoration: const BoxDecoration(color: Color(0xffb39ddb)),
+              decoration: const BoxDecoration(color: Colors.greenAccent),
               currentAccountPicture: CircleAvatar(
                 child: ClipOval(
                     child: img_url != null

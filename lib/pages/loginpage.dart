@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/registerpage.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_application_1/pages/passwordreset.dart';
 import 'package:flutter_application_1/pages/errormessage.dart';
+import 'package:flutter_application_1/pages/schedule_calender/schedule.dart';
 
 class loginpage extends StatefulWidget {
   const loginpage({super.key});

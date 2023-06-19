@@ -2,10 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_application_1/pages/Recommendation/recommendationfetch.dart';
 import 'package:flutter_application_1/pages/Verifypage.dart';
 import 'package:flutter_application_1/pages/loginpage.dart';
 import 'package:flutter_application_1/pages/errormessage.dart';
-
+import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
+import 'package:flutter_application_1/pages/schedule_calender/notification.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
 //global navigator key
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -22,6 +26,10 @@ Future main() async {
       await FirebaseMessaging.instance.getInitialMessage();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessageBcakgroundhandler);
+  //
+  await NotificationApi().initialize();
+
+  tz.initializeTimeZones();
   //
   runApp(MaterialApp(
     scaffoldMessengerKey: messengerKey,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/Recommendation/recommendation.dart';
+import 'package:flutter_application_1/pages/Recommendation/recommendationfetch.dart';
 import 'package:flutter_application_1/pages/Sidebar.dart';
 import 'package:flutter_application_1/pages/container.dart';
 import 'package:flutter_application_1/pages/exercise/exercise.dart';
 import 'package:flutter_application_1/pages/personalpages/userinfo.dart';
 import 'package:flutter_application_1/pages/workoutpage/workoutplan.dart';
-
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_application_1/pages/schedule_calender/schedule.dart';
 
 class Fitnex extends StatefulWidget {
   const Fitnex({super.key});
@@ -18,13 +19,12 @@ class _FitnexState extends State<Fitnex> {
   int currentindex = 0;
   @override
   void initState() {
-    getData();
     super.initState();
-    FirebaseMessaging.instance.getInitialMessage();
-    FirebaseMessaging.onMessage.listen((event) {});
-  }
+    getData();
 
-  Future getNotification() async {}
+    // FirebaseMessaging.instance.getInitialMessage();
+    // FirebaseMessaging.onMessage.listen((event) {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +43,10 @@ class _FitnexState extends State<Fitnex> {
           BottomNavigationBarItem(
             label: 'body',
             icon: Icon(Icons.boy_outlined),
+          ),
+          BottomNavigationBarItem(
+            label: 'favorite',
+            icon: Icon(Icons.favorite),
           ),
           BottomNavigationBarItem(
             label: 'calculator',
@@ -81,10 +85,12 @@ class _FitnexState extends State<Fitnex> {
           child: currentindex == 0
               ? const Exercise()
               : currentindex == 1
-                  ? const calculator()
+                  ? DisplayRecommendedExercises()
                   : currentindex == 2
-                      ? const schedule()
-                      : WorkoutPlan(),
+                      ? const calculator()
+                      : currentindex == 3
+                          ? const schedule()
+                          : WorkoutPlan(),
         ),
       ),
     );
